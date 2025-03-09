@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP - Cadastro de clientes</title>
+
+    <!-- PICO-->
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  >
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>ERP</strong></li>
+        </ul>
+
+        <ul>
+            <li><a th:href="@{/clients}">Clientes</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+       <h6>Cadastro de clientes</h6>
+
+        <form method="post" th:object="${clientForm}">
+            <label for="">Nome*</label>
+            <input type="text" th:field="*{name}" required>
+
+            <label for="">E-mail*</label>
+            <input type="email" th:field="*{email}" required>
+
+            <label for="">Phone*</label>
+            <input type="text" th:field="*{phone}" pattern="^\(\d{2}\) \d{5}-\d{4}$" 
+                required placeholder="(00) 00000-0000">
+
+            <button type="submit">Salvar</button>
+        </form>
+        
+    </main>
+    
+</body>
+</html>
