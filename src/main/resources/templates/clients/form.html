@@ -1,0 +1,20 @@
+<html th:replace="~{layout :: layout(~{::title}, ~{::content},_,_)}">
+ <th:block th:fragment="title" th:text="${pageTitle}">Cadastro de clientes</th:block>
+ <th:block th:fragment="content">
+    <h6 th:text="${pageTitle}">Cadastro de clientes</h6>
+
+        <form method="post" th:object="${clientForm}">
+            <label for="">Nome*</label>
+            <input type="text" th:field="*{name}" required>
+
+            <label for="">E-mail*</label>
+            <input type="email" th:field="*{email}" required>
+
+            <label for="">Phone*</label>
+            <input type="text" th:field="*{phone}" pattern="^\(\d{2}\) \d{5}-\d{4}$" 
+                required placeholder="(00) 00000-0000">
+
+            <button type="submit">Salvar</button>
+        </form>
+ </th:block>
+</html>

@@ -1,60 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERP - Listagem de clientes</title>
+<html th:replace="~{layout :: layout(~{::title}, ~{::content}, ~{::styles} ,_)}">
+<th:block th:fragment="styles">
+    <style>
+        body {
+            background-color: silver;
+        }
+    </style>
 
-    <!-- PICO-->
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-  >
-</head>
-<body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>ERP</strong></li>
-        </ul>
+</th:block>
+ <th:block th:fragment="title">Listagem de clientes</th:block>
+ <th:block th:fragment="content">
+    <h6>Listagem de clientes</h6>
+    <a href="/clients/create" role="button">Novo Cliente</a>
 
-        <ul>
-            <li><a th:href="@{/clients}">Clientes</a></li>
-        </ul>
-    </nav>
-
-    <main class="container">
-       <h6>Listagem de clientes</h6>
-       <a href="/clients/create" role="button">Novo Cliente</a>
-
-       <table class="striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome do cliente</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Remover</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="client: ${clients}">
-                    <th scope="row" th:text="${client.id}"></th>
-                    <td th:text="${client.name}"></td>
-                    <td th:text="${client.email}"></td>
-                    <td th:text="${client.phone}"></td>
-                    <td>
-                        <a th:href="@{/clients/edit/{id}(id=${client.id})}">Editar</a>
-                    </td>
-                    <td>
-                        <a th:href="@{/clients/delete/{id}(id=${client.id})}">Remover</a>
-                    </td>
-                </tr>
-            </tbody>
+    <table class="striped" th:if="${not clients.isEmpty()}">
+         <thead>
+             <tr>
+                 <th scope="col">#</th>
+                 <th scope="col">Nome do cliente</th>
+                 <th scope="col">E-mail</th>
+                 <th scope="col">Telefone</th>
+                 <th scope="col">Ações</th>
+                 
+                 
+             </tr>
+         </thead>
+         <tbody>
+             <tr th:each="client: ${clients}">
+                 <th scope="row" th:text="${client.id}"></th>
+                 <td th:text="${client.name}"></td>
+                 <td th:text="${client.email}"></td>
+                 <td th:text="${client.phone}"></td>
+                 <td>
+                     <a th:href="@{/clients/edit/{id}(id=${client.id})}">Editar</a>
+                     <a th:href="@{/clients/delete/{id}(id=${client.id})}">Remover</a>
+                 </td>
+             </tr>
+         </tbody>
 
 
-       </table>
-       
-    </main>
+    </table>
+    <p th:unless="${not clients.isEmpty()}">Não existem clientes cadastrados</p>
     
-</body>
+ </th:block>
 </html>
+

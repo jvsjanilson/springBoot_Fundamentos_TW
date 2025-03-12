@@ -1,31 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERP - Home</title>
-
-    <!-- PICO-->
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-  >
-</head>
-<body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>ERP</strong></li>
-        </ul>
-
-        <ul>
-            <li><a th:href="@{/clients}">Clientes</a></li>
-        </ul>
-    </nav>
-
-    <main class="container">
-        <h1>Boas vindas</h1>
+<html th:replace="~{layout :: layout(~{::title}, ~{::content},_,_)}">
+ <th:block th:fragment="title">Home</th:block>
+ <th:block th:fragment="content">
+    <h1>Boas vindas</h1>
         <p>
             Spring Boot
         </p>
-    </main>
-    
-</body>
+
+        <!-- <div th:replace="~{fragments/_card :: card('Boas vindas', 'Bem vinda a treinaweb')}"></div>
+        <div th:replace="~{fragments/_card :: card(title='Teste', content='Boa tard')}"></div>
+        <div th:replace="~{fragments/_card :: card(_, 'Bem vinda a treinaweb')}"></div> -->    
+ </th:block>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout (title, content, styles, scripts)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP - <th:block th:replace="${title}"></th:block></title>
+
+    <!-- PICO-->
+    <link rel="stylesheet" th:href="@{/css/pico.min.css}"> 
+    <th:block th:replace="${styles}"></th:block>
+  
+</head>
+<body>
+    <div th:replace="~{fragments/_navbar :: navbar}" ></div>
+
+    <main class="container" th:insert="${content}">
+      
+    </main>
+    <th:block th:replace="${scripts}"></th:block>
+</body>
+</html>

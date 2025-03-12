@@ -1,0 +1,25 @@
+<h1>Formatacao de dados</h1>
+
+<p th:text="${#locale}"></p>
+
+<p th:text="${locale}"></p>
+
+<p th:text="${#temporals.format(date, 'SHORT')}"></p>
+<p th:text="${#temporals.monthName(date)}"></p>
+
+<p th:text="${#temporals.format(date, 'MEDIUM')}"></p>
+<p th:text="${#temporals.format(date, 'LONG')}"></p>
+<p th:text="${#temporals.format(date, 'FULL')}"></p>
+<p th:text="${#temporals.format(datetime)}"></p>
+<p th:text="${#temporals.format(datetime, locale)}"></p>
+<p th:text="${#temporals.format(#temporals.createToday, 'SHORT')}"></p>
+
+
+<p th:text="${#numbers.formatCurrency(currency)}"></p>
+<p th:text="${#numbers.formatDecimal(currency,3,'COMMA', 2, 'POINT')}"></p>
+<p th:text="${#numbers.formatDecimal(currency,3,'POINT', 2, 'COMMA')}"></p>
+<p th:text="${#numbers.formatPercent(percent,1,2)}"></p>
+
+<ul>
+    <li th:each="i: ${#numbers.sequence(1,10)}" th:text="${i}"></li>
+</ul>
